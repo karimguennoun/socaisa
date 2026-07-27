@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SOCAISA Workshop – Service-Oriented Computing, AI, and IoT for Smart Applications. Co-located with ICSOC 2026." />
+  <title>SOCAISA 2026 – Workshop on SOC, AI & IoT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0B1F3A;
+      --blue:   #1A4A8A;
+      --accent: #2D9CDB;
+      --teal:   #00C2A8;
+      --light:  #F0F6FF;
+      --white:  #FFFFFF;
+      --gray:   #6B7C93;
+      --border: #D6E4F0;
+      --text:   #1C2B3A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.65;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(11, 31, 58, 0.96);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--teal); }
+    nav ul { list-style: none; display: flex; gap: 32px; }
+    nav ul a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.875rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--teal); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, #0D2D5E 60%, #0B3D6B 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(45,156,219,0.12) 0%, transparent 70%);
+    }
+    .edition-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,194,168,0.15);
+      border: 1px solid rgba(0,194,168,0.4);
+      color: var(--teal);
+      font-size: 0.8rem; font-weight: 600;
+      padding: 6px 16px; border-radius: 100px;
+      margin-bottom: 28px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .edition-badge::before {
+      content: '';
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--teal);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+    #hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700; color: var(--white);
+      line-height: 1.15; letter-spacing: -0.03em;
+      max-width: 800px; margin-bottom: 12px;
+    }
+    #hero h1 span { color: var(--teal); }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: rgba(255,255,255,0.65);
+      max-width: 600px; margin-bottom: 40px;
+    }
+    .hero-meta {
+      display: flex; gap: 40px; justify-content: center;
+      flex-wrap: wrap; margin-bottom: 48px;
+    }
+    .hero-meta-item { text-align: center; }
+    .hero-meta-item .label {
+      font-size: 0.75rem; text-transform: uppercase;
+      letter-spacing: 0.1em; color: rgba(255,255,255,0.4);
+      margin-bottom: 4px;
+    }
+    .hero-meta-item .value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem; font-weight: 600; color: var(--white);
+    }
+    .divider-v { width: 1px; background: rgba(255,255,255,0.15); align-self: stretch; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--navy);
+      font-weight: 700; font-size: 0.95rem;
+      padding: 14px 36px; border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,194,168,0.35); }
+    .btn-ghost {
+      display: inline-block;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      font-weight: 600; font-size: 0.95rem;
+      padding: 14px 36px; border-radius: 8px;
+      text-decoration: none;
+      margin-left: 12px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--teal); background: rgba(0,194,168,0.08); }
+
+    /* ── SECTION BASE ── */
+    section { padding: 96px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700; color: var(--navy);
+      letter-spacing: -0.02em; margin-bottom: 20px;
+    }
+    .section-lead {
+      font-size: 1.05rem; color: var(--gray);
+      max-width: 680px; margin-bottom: 56px;
+    }
+
+    /* ── OVERVIEW ── */
+    #about { background: var(--light); }
+    .overview-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: start;
+    }
+    .overview-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 36px;
+    }
+    .overview-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--navy); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .overview-card h3 .icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--teal));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; flex-shrink: 0;
+    }
+    .overview-card p { font-size: 0.93rem; color: var(--gray); line-height: 1.7; }
+
+    /* ── FOCUS AREAS ── */
+    #focus { background: var(--white); }
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .focus-group { margin-bottom: 40px; }
+    .focus-group-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--accent); margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+    }
+    .focus-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--light); border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px 16px;
+      font-size: 0.875rem; color: var(--navy);
+      font-weight: 500; margin: 0 8px 10px 0;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .focus-tag:hover { border-color: var(--accent); background: #EBF4FF; }
+    .focus-tag::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal); flex-shrink: 0;
+    }
+
+    /* ── DATES ── */
+    #dates { background: var(--navy); }
+    #dates .section-title { color: var(--white); }
+    #dates .section-lead { color: rgba(255,255,255,0.55); }
+    #dates .section-label { color: var(--teal); }
+    .dates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .date-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 32px 28px;
+      position: relative; overflow: hidden;
+      transition: background 0.2s;
+    }
+    .date-card:hover { background: rgba(255,255,255,0.08); }
+    .date-card .step {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--teal); margin-bottom: 12px;
+    }
+    .date-card .date-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .date-card .date-label {
+      font-size: 0.875rem; color: rgba(255,255,255,0.5);
+    }
+
+    /* ── SUBMISSION ── */
+    #submission { background: var(--light); }
+    .submission-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 48px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    }
+    .submission-box h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--navy); margin-bottom: 14px;
+    }
+    .submission-box p { font-size: 0.93rem; color: var(--gray); line-height: 1.7; margin-bottom: 12px; }
+    .submission-box a { color: var(--accent); font-weight: 500; }
+    .highlight-box {
+      background: linear-gradient(135deg, var(--navy), #0D2D5E);
+      border-radius: 16px; padding: 32px;
+      color: var(--white);
+    }
+    .highlight-box h3 { color: var(--teal); margin-bottom: 14px; }
+    .highlight-box p { color: rgba(255,255,255,0.7); font-size: 0.93rem; line-height: 1.7; }
+
+    /* ── ORGANIZATION ── */
+    #team { background: var(--white); }
+    .chairs-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; margin-bottom: 56px;
+    }
+    .chair-card {
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px;
+      text-align: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .chair-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-3px); }
+    .chair-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--teal));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--white); margin: 0 auto 16px;
+    }
+    .chair-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      color: var(--navy); margin-bottom: 6px;
+    }
+    .chair-card .role {
+      font-size: 0.8rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--teal); margin-bottom: 8px;
+    }
+    .chair-card .affil { font-size: 0.85rem; color: var(--gray); }
+
+    /* ── PROGRAM COMMITTEE ── */
+    #committee { background: var(--light); }
+    .pc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .pc-item {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px 20px;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .pc-item .name { font-weight: 600; font-size: 0.9rem; color: var(--navy); }
+    .pc-item .inst { font-size: 0.8rem; color: var(--gray); }
+    .pc-item .country {
+      font-size: 0.75rem; color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--navy); text-align: center; }
+    #contact .section-title { color: var(--white); }
+    #contact .section-lead { color: rgba(255,255,255,0.55); margin: 0 auto 40px; }
+    #contact .section-label { color: var(--teal); }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: var(--teal); font-size: 1.1rem; font-weight: 600;
+      text-decoration: none;
+      border: 1.5px solid rgba(0,194,168,0.4);
+      padding: 14px 32px; border-radius: 10px;
+      transition: background 0.2s;
+    }
+    .contact-link:hover { background: rgba(0,194,168,0.1); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060E1A;
+      padding: 40px 24px;
+      text-align: center;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.85rem;
+    }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+
+    /* ── EDITIONS BANNER ── */
+    .editions-bar {
+      background: rgba(255,255,255,0.04);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 24px;
+      display: flex; justify-content: center; gap: 48px;
+      flex-wrap: wrap;
+    }
+    .edition-item { text-align: center; }
+    .edition-item .ed-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--teal); margin-bottom: 3px;
+    }
+    .edition-item .ed-info { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+    .edition-item.current .ed-info { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      nav ul { display: none; }
+      .overview-grid, .submission-box { grid-template-columns: 1fr; }
+      section { padding: 64px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">SOC<span>AISA</span></a>
+  <ul>
+    <li><a href="#about">Overview</a></li>
+    <li><a href="#focus">Focus Areas</a></li>
+    <li><a href="#dates">Dates</a></li>
+    <li><a href="#submission">Submission</a></li>
+    <li><a href="#team">Organization</a></li>
+    <li><a href="#committee">Committee</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="edition-badge">3rd Edition · ICSOC 2026</div>
+  <h1>SOCAISA<br /><span>Workshop</span></h1>
+  <p class="hero-sub">Service-Oriented Computing, Artificial Intelligence,<br/>and IoT for Smart Applications</p>
+
+  <div class="editions-bar" style="border-radius:16px; margin-bottom: 40px; width: 100%; max-width: 700px;">
+    <div class="edition-item">
+      <div class="ed-num">1st Edition</div>
+      <div class="ed-info">ICSOC 2024 · Tunisia</div>
+    </div>
+    <div class="edition-item">
+      <div class="ed-num">2nd Edition</div>
+      <div class="ed-info">ICSOC 2025 · China</div>
+    </div>
+    <div class="edition-item current">
+      <div class="ed-num">3rd Edition</div>
+      <div class="ed-info">ICSOC 2026 · TBA</div>
+    </div>
+  </div>
+
+  <div>
+    <a href="#submission" class="btn-primary">Submit a Paper</a>
+    <a href="#about" class="btn-ghost">Learn More</a>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About the Workshop</div>
+    <h2 class="section-title">Bridging SOC, AI & IoT</h2>
+    <p class="section-lead">
+      SOCAISA explores the convergence of Service-Oriented Computing, Artificial Intelligence, and the Internet of Things — addressing the critical challenges of interoperability and scalability in the design of intelligent, interconnected systems.
+    </p>
+    <div class="overview-grid">
+      <div class="overview-card">
+        <h3><span class="icon">🔗</span> Interoperability Challenges</h3>
+        <p>In the context of SOC and IoT, interoperability remains a fundamental challenge due to the diverse nature of devices, protocols, and service interfaces. AI techniques offer promising solutions by enabling systems to autonomously understand and adapt to varying data formats and communication protocols. Semantic technologies and NLP can standardize service descriptions, enhancing discovery and composition across heterogeneous environments.</p>
+      </div>
+      <div class="overview-card">
+        <h3><span class="icon">📈</span> Scalability Solutions</h3>
+        <p>As IoT deployments expand exponentially, generating massive data volumes, SOC frameworks must efficiently process and manage them at scale. AI-driven approaches — edge computing, distributed learning, federated architectures — enable decentralized decision-making, reducing latency and enhancing scalability. Predictive analytics and dynamic resource allocation allow SOC architectures to adapt to real-time demand.</p>
+      </div>
+      <div class="overview-card">
+        <h3><span class="icon">🤖</span> AI as a Convergence Engine</h3>
+        <p>Artificial Intelligence is no longer a standalone layer: it acts as the convergence engine that makes SOC and IoT systems adaptive, context-aware, and self-healing. From LLMs as service orchestrators to federated learning across IoT nodes, AI fundamentally reshapes how services are discovered, composed, and governed.</p>
+      </div>
+      <div class="overview-card">
+        <h3><span class="icon">🌐</span> Research & Practice</h3>
+        <p>SOCAISA brings together researchers and practitioners from three communities to produce cross-disciplinary insights, establish a shared vocabulary, and define a forward-looking research agenda. The workshop covers the full spectrum — from formal models and middleware design to real-world deployments and benchmarking frameworks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS AREAS -->
+<section id="focus">
+  <div class="container">
+    <div class="section-label">Topics</div>
+    <h2 class="section-title">Research Focus Areas</h2>
+    <p class="section-lead">The workshop welcomes contributions across the following themes, without being limited to them.</p>
+
+    <div class="focus-group">
+      <div class="focus-group-title">AI & Services</div>
+      <span class="focus-tag">AI Integration in Service-Oriented Systems</span>
+      <span class="focus-tag">AI-Driven Service Orchestration and Composition</span>
+      <span class="focus-tag">AI-Enhanced Service Discovery and Recommendation</span>
+      <span class="focus-tag">AI-Based SLA Management</span>
+      <span class="focus-tag">AI-Driven Adaptive and Self-Healing Systems</span>
+      <span class="focus-tag">AI for Quality of Service (QoS) Optimization</span>
+      <span class="focus-tag">AI-Enabled Security and Privacy in SOC</span>
+      <span class="focus-tag">Intent-Based Service Computing</span>
+    </div>
+
+    <div class="focus-group">
+      <div class="focus-group-title">LLMs & Generative AI</div>
+      <span class="focus-tag">LLMs as Service Orchestrators in IoT Environments</span>
+      <span class="focus-tag">Generative AI for Automated Service Configuration</span>
+      <span class="focus-tag">Small Language Models (SLMs) for Resource-Constrained IoT</span>
+      <span class="focus-tag">Explainable AI (XAI) for Trustworthy Service Systems</span>
+    </div>
+
+    <div class="focus-group">
+      <div class="focus-group-title">IoT & Edge Computing</div>
+      <span class="focus-tag">AI for IoT and Edge Computing Integration</span>
+      <span class="focus-tag">Context-Aware AI Technologies for Services and IoT</span>
+      <span class="focus-tag">Edge-Cloud Continuum Architectures for Intelligent IoT</span>
+      <span class="focus-tag">Distributed LLM Inference at the Edge</span>
+      <span class="focus-tag">AI-Enabled Sustainable IoT Solutions</span>
+    </div>
+
+    <div class="focus-group">
+      <div class="focus-group-title">Interoperability & Semantics</div>
+      <span class="focus-tag">Semantic-Based IoT Solutions for Interoperability</span>
+      <span class="focus-tag">Federated Learning for Privacy-Preserving IoT Services</span>
+    </div>
+
+    <div class="focus-group">
+      <div class="focus-group-title">Data, Cloud & Infrastructure</div>
+      <span class="focus-tag">Big Data Management in Service-Oriented IoT</span>
+      <span class="focus-tag">Microservices and Serverless Architectures for Scalable IoT</span>
+      <span class="focus-tag">Carbon-Aware Service Scheduling in IoT Infrastructures</span>
+    </div>
+
+    <div class="focus-group">
+      <div class="focus-group-title">Emerging Paradigms</div>
+      <span class="focus-tag">Digital Twin Frameworks for IoT Service Management</span>
+      <span class="focus-tag">Blockchain for Decentralized Trust and SLA Enforcement</span>
+      <span class="focus-tag">AI-Driven SOC for Smart Health, Smart Cities & Industry 4.0</span>
+    </div>
+  </div>
+</section>
+
+<!-- DATES -->
+<section id="dates">
+  <div class="container">
+    <div class="section-label">Timeline</div>
+    <h2 class="section-title">Important Dates</h2>
+    <p class="section-lead">All deadlines are at 23:59 AoE (Anywhere on Earth).</p>
+    <div class="dates-grid">
+      <div class="date-card">
+        <div class="step">Step 01</div>
+        <div class="date-value">TBA</div>
+        <div class="date-label">Paper Submission Deadline</div>
+      </div>
+      <div class="date-card">
+        <div class="step">Step 02</div>
+        <div class="date-value">TBA</div>
+        <div class="date-label">Author Notification</div>
+      </div>
+      <div class="date-card">
+        <div class="step">Step 03</div>
+        <div class="date-value">TBA</div>
+        <div class="date-label">Camera-Ready Submission</div>
+      </div>
+      <div class="date-card">
+        <div class="step">Step 04</div>
+        <div class="date-value">2026</div>
+        <div class="date-label">Workshop Day · ICSOC 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBMISSION -->
+<section id="submission">
+  <div class="container">
+    <div class="section-label">Guidelines</div>
+    <h2 class="section-title">Submission & Publication</h2>
+    <p class="section-lead">Authors are invited to submit original, unpublished research contributions.</p>
+    <div class="submission-box">
+      <div>
+        <h3>Format Requirements</h3>
+        <p>Full papers must not exceed <strong>12 pages</strong> (including references and appendices), formatted according to the <strong>Springer LNCS</strong> template.</p>
+        <p>Papers must be submitted as PDF files via the EasyChair platform. If you encounter any issue during submission, contact us at <a href="mailto:Karim.guennoun@ehtp.ac.ma">Karim.guennoun@ehtp.ac.ma</a>.</p>
+        <p>Each submission will be reviewed by at least <strong>three members</strong> of the international program committee, evaluated on originality, significance, technical soundness, and clarity.</p>
+      </div>
+      <div class="highlight-box">
+        <h3>Publication</h3>
+        <p>All accepted papers will be published in the workshop proceedings as part of the <strong>Lecture Notes in Computer Science (LNCS)</strong> series by Springer.</p>
+        <br/>
+        <p>At least one author of each accepted paper must register and present at the workshop. Registration follows the terms of the main ICSOC 2026 conference.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORGANIZATION -->
+<section id="team">
+  <div class="container">
+    <div class="section-label">Organizers</div>
+    <h2 class="section-title">Workshop Chairs</h2>
+    <p class="section-lead">The workshop is organized by researchers from EHTP Casablanca and LAAS-CNRS Toulouse.</p>
+    <div class="chairs-grid">
+      <div class="chair-card">
+        <div class="chair-avatar">MG</div>
+        <div class="role">Workshop Chair</div>
+        <h3>Mohammed Karim Guennoun</h3>
+        <div class="affil">SIRC/LaGeS-EHTP<br/>Ecole Hassania des Travaux Publics, Casablanca</div>
+      </div>
+      <div class="chair-card">
+        <div class="chair-avatar">MW</div>
+        <div class="role">Workshop Chair</div>
+        <h3>Mohammed Wahbi</h3>
+        <div class="affil">SIRC/LaGeS-EHTP<br/>Ecole Hassania des Travaux Publics, Casablanca</div>
+      </div>
+      <div class="chair-card">
+        <div class="chair-avatar">ST</div>
+        <div class="role">Workshop Chair</div>
+        <h3>Said Tazi</h3>
+        <div class="affil">LAAS-CNRS Toulouse<br/>Team SARA</div>
+      </div>
+      <div class="chair-card">
+        <div class="chair-avatar">MA</div>
+        <div class="role">Web & Publicity</div>
+        <h3>Mouad Abdouh</h3>
+        <div class="affil">GSDEV<br/>Casablanca</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM COMMITTEE -->
+<section id="committee">
+  <div class="container">
+    <div class="section-label">Scientific Committee</div>
+    <h2 class="section-title">Program Committee</h2>
+    <p class="section-lead">International reviewers ensuring the scientific quality of all submissions.</p>
+    <div class="pc-grid">
+      <div class="pc-item"><span class="name">Achraf El Kasmi</span><span class="inst">Abdelmalek Essaadi University</span><span class="country">Morocco</span></div>
+      <div class="pc-item"><span class="name">Adil Mehdary</span><span class="inst">Ecole Hassania des Travaux Publics</span><span class="country">Morocco</span></div>
+      <div class="pc-item"><span class="name">Anouar Boudhir Abdelhakim</span><span class="inst">Abdelmalek Essaadi University</span><span class="country">Morocco</span></div>
+      <div class="pc-item"><span class="name">Ben Halima Riadh</span><span class="inst">ENIS – Ecole Nationale d'Ingénieurs de Sfax</span><span class="country">Tunisia</span></div>
+      <div class="pc-item"><span class="name">Bouassida Ismail</span><span class="inst">Université de Sfax</span><span class="country">Tunisia</span></div>
+      <div class="pc-item"><span class="name">Chbeir Richard</span><span class="inst">Université de Pau</span><span class="country">France</span></div>
+      <div class="pc-item"><span class="name">Drira Khalil</span><span class="inst">LAAS-CNRS Toulouse</span><span class="country">France</span></div>
+      <div class="pc-item"><span class="name">El Hafid Yassine</span><span class="inst">Ecole Hassania des Travaux Publics</span><span class="country">Morocco</span></div>
+      <div class="pc-item"><span class="name">El Rharras Abdessamad</span><span class="inst">Ecole Hassania des Travaux Publics</span><span class="country">Morocco</span></div>
+      <div class="pc-item"><span class="name">Hadrani Abdelkhalek</span><span class="inst">ISPITS Casablanca</span><span class="country">Morocco</span></div>
+      <div class="pc-item"><span class="name">Jaouad Boutahar</span><span class="inst">Ecole Hassania des Travaux Publics</span><span class="country">Morocco</span></div>
+      <div class="pc-item"><span class="name">Laaroussi Mohamed</span><span class="inst">Ecole Hassania des Travaux Publics</span><span class="country">Morocco</span></div>
+      <div class="pc-item"><span class="name">Marwa Hachicha</span><span class="inst">University of Sfax</span><span class="country">Tunisia</span></div>
+      <div class="pc-item"><span class="name">Chihab Hannachi</span><span class="inst">Université Toulouse</span><span class="country">France</span></div>
+      <div class="pc-item"><span class="name">Mohamed Ben Ahmed</span><span class="inst">Abdelmalek Essaadi University</span><span class="country">Morocco</span></div>
+      <div class="pc-item"><span class="name">Mosbah Mohamed</span><span class="inst">Université de Bordeaux</span><span class="country">France</span></div>
+      <div class="pc-item"><span class="name">Raida Ktari</span><span class="inst">University of Sfax</span><span class="country">Tunisia</span></div>
+      <div class="pc-item"><span class="name">Ramrami Azzeddine</span><span class="inst">ENSTA</span><span class="country">France</span></div>
+      <div class="pc-item"><span class="name">Sami Yangui</span><span class="inst">INSA Toulouse & LAAS-CNRS</span><span class="country">France</span></div>
+      <div class="pc-item"><span class="name">Saadane Rachid</span><span class="inst">Ecole Hassania des Travaux Publics</span><span class="country">Morocco</span></div>
+      <div class="pc-item"><span class="name">Said Tazi</span><span class="inst">LAAS-CNRS Toulouse</span><span class="country">France</span></div>
+      <div class="pc-item"><span class="name">Miriam Capretz</span><span class="inst">Western University</span><span class="country">Canada</span></div>
+      <div class="pc-item"><span class="name">Wahbi Mohammed</span><span class="inst">Ecole Hassania des Travaux Publics</span><span class="country">Morocco</span></div>
+      <div class="pc-item"><span class="name">El Beqqali Omar</span><span class="inst">Université Mohamed Ben Abdellah</span><span class="country">Morocco</span></div>
+      <div class="pc-item"><span class="name">Abdellah Chehri</span><span class="inst">Royal Military College, Kingston</span><span class="country">Canada</span></div>
+      <div class="pc-item"><span class="name">Mounir Derri</span><span class="inst">Ecole Hassania des Travaux Publics</span><span class="country">Morocco</span></div>
+      <div class="pc-item"><span class="name">Khalid El Fazazy</span><span class="inst">U.S.M.B.A</span><span class="country">Morocco</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Contact</h2>
+    <p class="section-lead">For any question regarding paper submission or workshop organization, reach us directly.</p>
+    <a class="contact-link" href="mailto:Karim.guennoun@ehtp.ac.ma">
+      ✉ Karim.guennoun@ehtp.ac.ma
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:8px;">
+    © 2026 SOCAISA Workshop · Co-located with <a href="https://icsoc2026.org" target="_blank">ICSOC 2026</a>
+  </p>
+  <p>Ecole Hassania des Travaux Publics, Casablanca · LAAS-CNRS, Toulouse</p>
+</footer>
+
+</body>
+</html>
