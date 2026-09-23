@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="SOCAISA Workshop – Service-Oriented Computing, AI, and IoT for Smart Applications. Co-located with ICSOC 2026." />
-  <title>SOCAISA 2026 – Workshop on SOC, AI & IoT</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SOCAISA Workshop – Service-Oriented Computing, AI, and IoT for Smart Applications. Co-located with ICSOC 2026.">
+  <title>SOCAISA 2026 – Workshop on SOC, AI &amp; IoT</title>
+  <link href="SOCAISA%202026%20%E2%80%93%20Workshop%20on%20SOC,%20AI%20&amp;%20IoT_files/css2_irMN.css" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -223,6 +223,7 @@
     #dates { background: var(--navy); }
     #dates .section-title { color: var(--white); }
     #dates .section-lead { color: rgba(255,255,255,0.55); }
+    #dates .section-lead a { color: var(--teal); }
     #dates .section-label { color: var(--teal); }
     .dates-grid {
       display: grid;
@@ -249,6 +250,33 @@
     }
     .date-card .date-label {
       font-size: 0.875rem; color: rgba(255,255,255,0.5);
+    }
+    /* Ancienne date barrée */
+    .date-card .old-date {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.35);
+      text-decoration: line-through;
+      text-decoration-color: rgba(255,80,80,0.85);
+      text-decoration-thickness: 2px;
+      margin-bottom: 4px;
+      letter-spacing: 0.01em;
+    }
+    /* Badge "Updated" */
+    .date-card .updated-badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--navy);
+      background: var(--teal);
+      padding: 2px 8px;
+      border-radius: 100px;
+      margin-left: 8px;
+      vertical-align: middle;
     }
 
     /* ── SUBMISSION ── */
@@ -400,8 +428,8 @@
 <section id="hero">
   <div class="edition-badge">3rd Edition · ICSOC 2026</div>
   <p style="margin-bottom: 16px;"><a href="https://icsoc2026.it.p.lodz.pl/index.html" target="_blank" style="color: var(--teal); text-decoration: underline;">The 24th International Conference on Service-Oriented Computing (ICSOC 2026)</a></p>
-  <h1>SOCAISA<br /><span>Workshop</span></h1>
-  <p class="hero-sub">Service-Oriented Computing, Artificial Intelligence,<br/>and IoT for Smart Applications</p>
+  <h1>SOCAISA<br><span>Workshop</span></h1>
+  <p class="hero-sub">Service-Oriented Computing, Artificial Intelligence,<br>and IoT for Smart Applications</p>
 
   <div class="editions-bar" style="border-radius:16px; margin-bottom: 40px; width: 100%; max-width: 700px;">
     <div class="edition-item">
@@ -428,7 +456,7 @@
 <section id="about">
   <div class="container">
     <div class="section-label">About the Workshop</div>
-    <h2 class="section-title">Bridging SOC, AI & IoT</h2>
+    <h2 class="section-title">Bridging SOC, AI &amp; IoT</h2>
     <p class="section-lead">
       SOCAISA explores the convergence of Service-Oriented Computing, Artificial Intelligence, and the Internet of Things — addressing the critical challenges of interoperability and scalability in the design of intelligent, interconnected systems.
     </p>
@@ -446,7 +474,7 @@
         <p>Artificial Intelligence is no longer a standalone layer: it acts as the convergence engine that makes SOC and IoT systems adaptive, context-aware, and self-healing. From LLMs as service orchestrators to federated learning across IoT nodes, AI fundamentally reshapes how services are discovered, composed, and governed.</p>
       </div>
       <div class="overview-card">
-        <h3><span class="icon">🌐</span> Research & Practice</h3>
+        <h3><span class="icon">🌐</span> Research &amp; Practice</h3>
         <p>SOCAISA brings together researchers and practitioners from three communities to produce cross-disciplinary insights, establish a shared vocabulary, and define a forward-looking research agenda. The workshop covers the full spectrum — from formal models and middleware design to real-world deployments and benchmarking frameworks.</p>
       </div>
     </div>
@@ -461,7 +489,7 @@
     <p class="section-lead">The workshop welcomes contributions across the following themes, without being limited to them.</p>
 
     <div class="focus-group">
-      <div class="focus-group-title">AI & Services</div>
+      <div class="focus-group-title">AI &amp; Services</div>
       <span class="focus-tag">AI Integration in Service-Oriented Systems</span>
       <span class="focus-tag">AI-Driven Service Orchestration and Composition</span>
       <span class="focus-tag">AI-Enhanced Service Discovery and Recommendation</span>
@@ -473,7 +501,7 @@
     </div>
 
     <div class="focus-group">
-      <div class="focus-group-title">LLMs & Generative AI</div>
+      <div class="focus-group-title">LLMs &amp; Generative AI</div>
       <span class="focus-tag">LLMs as Service Orchestrators in IoT Environments</span>
       <span class="focus-tag">Generative AI for Automated Service Configuration</span>
       <span class="focus-tag">Small Language Models (SLMs) for Resource-Constrained IoT</span>
@@ -481,7 +509,7 @@
     </div>
 
     <div class="focus-group">
-      <div class="focus-group-title">IoT & Edge Computing</div>
+      <div class="focus-group-title">IoT &amp; Edge Computing</div>
       <span class="focus-tag">AI for IoT and Edge Computing Integration</span>
       <span class="focus-tag">Context-Aware AI Technologies for Services and IoT</span>
       <span class="focus-tag">Edge-Cloud Continuum Architectures for Intelligent IoT</span>
@@ -490,13 +518,13 @@
     </div>
 
     <div class="focus-group">
-      <div class="focus-group-title">Interoperability & Semantics</div>
+      <div class="focus-group-title">Interoperability &amp; Semantics</div>
       <span class="focus-tag">Semantic-Based IoT Solutions for Interoperability</span>
       <span class="focus-tag">Federated Learning for Privacy-Preserving IoT Services</span>
     </div>
 
     <div class="focus-group">
-      <div class="focus-group-title">Data, Cloud & Infrastructure</div>
+      <div class="focus-group-title">Data, Cloud &amp; Infrastructure</div>
       <span class="focus-tag">Big Data Management in Service-Oriented IoT</span>
       <span class="focus-tag">Microservices and Serverless Architectures for Scalable IoT</span>
       <span class="focus-tag">Carbon-Aware Service Scheduling in IoT Infrastructures</span>
@@ -506,7 +534,7 @@
       <div class="focus-group-title">Emerging Paradigms</div>
       <span class="focus-tag">Digital Twin Frameworks for IoT Service Management</span>
       <span class="focus-tag">Blockchain for Decentralized Trust and SLA Enforcement</span>
-      <span class="focus-tag">AI-Driven SOC for Smart Health, Smart Cities & Industry 4.0</span>
+      <span class="focus-tag">AI-Driven SOC for Smart Health, Smart Cities &amp; Industry 4.0</span>
     </div>
   </div>
 </section>
@@ -520,17 +548,20 @@
     <div class="dates-grid">
       <div class="date-card">
         <div class="step">Step 01</div>
-        <div class="date-value">23 September 2026</div>
+        <span class="old-date">23 September 2026</span>
+        <div class="date-value">15 October 2026 <span class="updated-badge">Updated</span></div>
         <div class="date-label">Paper Submission Deadline</div>
       </div>
       <div class="date-card">
         <div class="step">Step 02</div>
-        <div class="date-value">24 October 2026</div>
+        <span class="old-date">24 October 2026</span>
+        <div class="date-value">29 October 2026 <span class="updated-badge">Updated</span></div>
         <div class="date-label">Author Notification</div>
       </div>
       <div class="date-card">
         <div class="step">Step 03</div>
-        <div class="date-value">07 November 2026</div>
+        <span class="old-date">07 November 2026</span>
+        <div class="date-value">12 November 2026 <span class="updated-badge">Updated</span></div>
         <div class="date-label">Camera-Ready Submission</div>
       </div>
       <div class="date-card">
@@ -546,7 +577,7 @@
 <section id="submission">
   <div class="container">
     <div class="section-label">Guidelines</div>
-    <h2 class="section-title">Submission & Publication</h2>
+    <h2 class="section-title">Submission &amp; Publication</h2>
     <p class="section-lead">Authors are invited to submit original, unpublished research contributions.</p>
     <div class="submission-box">
       <div>
@@ -558,7 +589,7 @@
       <div class="highlight-box">
         <h3>Publication</h3>
         <p>All accepted papers will be published in the workshop proceedings as part of the <strong>Lecture Notes in Computer Science (LNCS)</strong> series by Springer.</p>
-        <br/>
+        <br>
         <p>At least one author of each accepted paper must register and present at the workshop. Registration follows the terms of the main ICSOC 2026 conference.</p>
       </div>
     </div>
@@ -576,19 +607,19 @@
         <div class="chair-avatar">MG</div>
         <div class="role">Workshop Chair</div>
         <h3>Mohammed Karim Guennoun</h3>
-        <div class="affil">SIRC/LaGeS-EHTP<br/>Ecole Hassania des Travaux Publics, Casablanca</div>
+        <div class="affil">SIRC/LaGeS-EHTP<br>Ecole Hassania des Travaux Publics, Casablanca</div>
       </div>
       <div class="chair-card">
         <div class="chair-avatar">MW</div>
         <div class="role">Workshop Chair</div>
         <h3>Mohammed Wahbi</h3>
-        <div class="affil">SIRC/LaGeS-EHTP<br/>Ecole Hassania des Travaux Publics, Casablanca</div>
+        <div class="affil">SIRC/LaGeS-EHTP<br>Ecole Hassania des Travaux Publics, Casablanca</div>
       </div>
       <div class="chair-card">
         <div class="chair-avatar">ST</div>
         <div class="role">Workshop Chair</div>
         <h3>Said Tazi</h3>
-        <div class="affil">LAAS-CNRS Toulouse<br/>Team SARA</div>
+        <div class="affil">LAAS-CNRS Toulouse<br>Team SARA</div>
       </div>
     </div>
   </div>
@@ -619,7 +650,7 @@
       <div class="pc-item"><span class="name">Mosbah Mohamed</span><span class="inst">Université de Bordeaux</span><span class="country">France</span></div>
       <div class="pc-item"><span class="name">Raida Ktari</span><span class="inst">University of Sfax</span><span class="country">Tunisia</span></div>
       <div class="pc-item"><span class="name">Ramrami Azzeddine</span><span class="inst">ENSTA</span><span class="country">France</span></div>
-      <div class="pc-item"><span class="name">Sami Yangui</span><span class="inst">INSA Toulouse & LAAS-CNRS</span><span class="country">France</span></div>
+      <div class="pc-item"><span class="name">Sami Yangui</span><span class="inst">INSA Toulouse &amp; LAAS-CNRS</span><span class="country">France</span></div>
       <div class="pc-item"><span class="name">Saadane Rachid</span><span class="inst">Ecole Hassania des Travaux Publics</span><span class="country">Morocco</span></div>
       <div class="pc-item"><span class="name">Said Tazi</span><span class="inst">LAAS-CNRS Toulouse</span><span class="country">France</span></div>
       <div class="pc-item"><span class="name">Miriam Capretz</span><span class="inst">Western University</span><span class="country">Canada</span></div>
@@ -647,10 +678,9 @@
 <!-- FOOTER -->
 <footer>
   <p style="margin-bottom:8px;">
-    © 2026 SOCAISA Workshop · Co-located with <a href="https://icsoc2026.org" target="_blank">ICSOC 2026</a>
+    © 2026 SOCAISA Workshop · Co-located with <a href="https://icsoc2026.org/" target="_blank">ICSOC 2026</a>
   </p>
   <p>Ecole Hassania des Travaux Publics, Casablanca · LAAS-CNRS, Toulouse</p>
 </footer>
 
-</body>
-</html>
+</body></html>
